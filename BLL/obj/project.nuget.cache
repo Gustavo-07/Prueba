@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "7zLoNUecWvfJMmZCRXuQk3ksQBS7SQJcQ9+mx2zSU1Q1JM2rG+5ZVlkbD7N2dHRmwvrwaMEuGm3X+Go1yiphtQ==",
+  "dgSpecHash": "AY9KSOJvRhHecHFNFprY8rZkn7a2jKytyQ4gppEzLOBOCFvYmpenTxmLwFcOeaZDfEpNF11q5etCJ7wc14vTOw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ricky\\Downloads\\PerceptronMulticapaAndBackpropagation\\BLL\\BLL.csproj",
+  "projectFilePath": "C:\\Users\\Acer\\Desktop\\SEGUNDO CORTE INTELIGENCIA\\Prueba\\BLL\\BLL.csproj",
   "expectedPackageFiles": [
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\Acer\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Acer\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []
 }

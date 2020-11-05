@@ -195,24 +195,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ricky\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Acer\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ricky\\Downloads\\PerceptronMulticapaAndBackpropagation\\DALL\\DALL.csproj",
+      "projectUniqueName": "C:\\Users\\Acer\\Desktop\\SEGUNDO CORTE INTELIGENCIA\\Prueba\\DALL\\DALL.csproj",
       "projectName": "DALL",
-      "projectPath": "C:\\Users\\Ricky\\Downloads\\PerceptronMulticapaAndBackpropagation\\DALL\\DALL.csproj",
-      "packagesPath": "C:\\Users\\Ricky\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ricky\\Downloads\\PerceptronMulticapaAndBackpropagation\\DALL\\obj\\",
+      "projectPath": "C:\\Users\\Acer\\Desktop\\SEGUNDO CORTE INTELIGENCIA\\Prueba\\DALL\\DALL.csproj",
+      "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Acer\\Desktop\\SEGUNDO CORTE INTELIGENCIA\\Prueba\\DALL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Ricky\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
@@ -224,8 +225,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\Ricky\\Downloads\\PerceptronMulticapaAndBackpropagation\\Entity\\Entity.csproj": {
-              "projectPath": "C:\\Users\\Ricky\\Downloads\\PerceptronMulticapaAndBackpropagation\\Entity\\Entity.csproj"
+            "C:\\Users\\Acer\\Desktop\\SEGUNDO CORTE INTELIGENCIA\\Prueba\\Entity\\Entity.csproj": {
+              "projectPath": "C:\\Users\\Acer\\Desktop\\SEGUNDO CORTE INTELIGENCIA\\Prueba\\Entity\\Entity.csproj"
             }
           }
         }
@@ -256,7 +257,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

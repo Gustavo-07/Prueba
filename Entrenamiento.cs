@@ -29,7 +29,7 @@ namespace BackpropagationAndPerceptron
 
         PercetromMulticapaService percetromMulticapaService;
         BackPropagationService backPropagationService;
-
+        
 
         // datos para el cargue del data set y entradas salidas y patrones
         private int entradas;
@@ -205,7 +205,7 @@ namespace BackpropagationAndPerceptron
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-
+            DtgvDatos.Enabled = true;
             NumeroDeCapas = Convert.ToInt32(TxtNumeroCapas.Value);
 
             ListaNumeroNeuronasCapas = new int[NumeroDeCapas];
@@ -296,5 +296,13 @@ namespace BackpropagationAndPerceptron
 
         }
 
+        private void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            Entrenamiento entrenamiento = new Entrenamiento();
+
+            entrenamiento.Show();
+            this.Close();
+
+        }
     }
 }
