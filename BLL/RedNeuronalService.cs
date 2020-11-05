@@ -9,9 +9,19 @@ namespace BLL
 
         double[,] pesos = { };
         double[] umbrales = { };
+        double errorIteracion = 0;
+        double[] patronEntradas = { };
         public void Entrenar(RedNeuronal redNeuronal)
         {
-            
+            //CALCULAR LAS SALIDAS DE LAS NEURONAS QUE SE ENCUENTRAN EN LAS CAPAS OCULTAS
+
+           
+            int contador = 1;
+            errorIteracion = 1000;
+
+            while (redNeuronal.ErrorMaximoPermitido < errorIteracion && contador < redNeuronal.NumeroIteraciones)
+            {
+            }
         }
 
         public void Simular(RedNeuronal redNeuronal)
@@ -52,10 +62,12 @@ namespace BLL
             return pesos;
         }
 
-        public void SalidaNeuronaXCapa()
+      /*  public double SalidaNeuronaXCapa(RedNeuronal redNeuronal)
         {
+            double[] Hi = { };
 
-        }
+            return Hi;
+        }*/
    
         public void ActualizarPesosXCapa()
         {
@@ -63,5 +75,20 @@ namespace BLL
         }
     
         //public void ActualizarUmbralesXCapa() { }
+
+        public double FuncionSigmoidal(double x)
+        {
+            return  (1)/(1 + Math.Exp(-x));
+        }
+
+        public double FuncionTangenteHiperbolida(double x)
+        {
+            return Math.Tanh(-x);
+        }
+
+        public double FuncionGaussiana(double x)
+        {
+            return Math.Tanh(-x);
+        }
     }
 }

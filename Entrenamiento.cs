@@ -43,6 +43,8 @@ namespace BackpropagationAndPerceptron
         private float[] arraydeerrordelospatrones;
         private float[] arraydeerroreslineales;
         private double[] arraydeumbrales;
+        private double[] arrayEntradas;
+        private double[] arrayPatrones = { };
         private double[,] arraydematrizdepesos;
         private float[,] arraydesalidasdeseadas;
 
@@ -107,6 +109,7 @@ namespace BackpropagationAndPerceptron
                 {
                     string titulo = "X " + (i + 1);
                     DtgvDatos.Columns.Add("Xr", titulo);
+                    
                 }
                 arraydesalidasdelared = new float[salidas];
                 arraydesalidasdeseadas = new float[patrones, salidas];
@@ -121,6 +124,7 @@ namespace BackpropagationAndPerceptron
                 foreach (string registro in registros)
                 {
                     DtgvDatos.Rows.Add(registro.Split(' '));
+                    
                 }
                 DtgvDatos.AllowUserToAddRows = false;
 
@@ -144,12 +148,14 @@ namespace BackpropagationAndPerceptron
                 {
                     List<float> listadesalidasdeseadas = new List<float>();
                     List<int> numerodepatrones = new List<int>();
+                    
                     for (int J = 0; J < patrones; J++)
                     {
                         string[] salidadeseada = registros[J].Split(' ');
                         listadesalidasdeseadas.Add(float.Parse(salidadeseada[i]));
                         Salidasdeseadas.Add(float.Parse(salidadeseada[i]));
                         numerodepatrones.Add((J + 1));
+
                     }
                     // graficaComportamientodelentrenamiento.Series[i - entradas].Points.DataBindXY(numerodepatrones, listadesalidasdeseadas);
                     GraficaComportamientoSalida.Series[i - entradas].Points.DataBindXY(numerodepatrones, listadesalidasdeseadas);
@@ -268,10 +274,10 @@ namespace BackpropagationAndPerceptron
                 backPropagation.FuncionActivacionCapaSalida = CbxFuncionActivacionCapaSalida.SelectedItem.ToString();
                 backPropagation.Umbrales = arraydeumbrales;
                 backPropagation.Pesos = arraydematrizdepesos;
+                backPropagation.Patrones = arrayPatrones;
 
 
-
-               MessageBox.Show("Numero entradas: " + backPropagation.NumeroEntradas.ToString() + "" +
+                MessageBox.Show("Numero entradas: " + backPropagation.NumeroEntradas.ToString() + "" +
                                 "NumeroSalidas: " + backPropagation.NumeroSalidas.ToString() + "" +
                                 "NumeroPatrones: " + backPropagation.NumeroPatrones.ToString() + "" +
                                 "NumeroCapas: " + backPropagation.NumeroCapas + "" +
@@ -282,7 +288,9 @@ namespace BackpropagationAndPerceptron
                                 "ErrorMaximoPermitido: " + backPropagation.ErrorMaximoPermitido.ToString() + "" +
                                 "FuncionActivacionCapaSalida: " + backPropagation.FuncionActivacionCapaSalida.ToString() + "" +
                                 "Umbrales: " + backPropagation.Umbrales[0].ToString() + "" +
-                                "Pesos: " + backPropagation.Pesos[0, 0].ToString() + "", "algo");
+                                "Pesos: " + backPropagation.Pesos[0, 0].ToString() + "" , "algo");
+
+                
             }
         }
 
