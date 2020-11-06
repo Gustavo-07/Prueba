@@ -47,3 +47,20 @@ C:\Users\Ricky\Downloads\PerceptronMulticapaAndBackpropagation\obj\Debug\Backpro
 C:\Users\Ricky\Downloads\PerceptronMulticapaAndBackpropagation\obj\Debug\BackpropagationAndPerceptron.csproj.CopyComplete
 C:\Users\Ricky\Downloads\PerceptronMulticapaAndBackpropagation\obj\Debug\BackpropagationAndPerceptron.exe
 C:\Users\Ricky\Downloads\PerceptronMulticapaAndBackpropagation\obj\Debug\BackpropagationAndPerceptron.pdb
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\bin\Debug\BackpropagationAndPerceptron.exe.config
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\bin\Debug\BackpropagationAndPerceptron.exe
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\bin\Debug\BackpropagationAndPerceptron.pdb
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\bin\Debug\BLL.dll
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\bin\Debug\Entity.dll
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\bin\Debug\BLL.pdb
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\bin\Debug\Entity.pdb
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\BackpropagationAndPerceptron.csprojAssemblyReference.cache
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\BackpropagationAndPerceptron.Entrenamiento.resources
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\BackpropagationAndPerceptron.Simulacion.resources
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\BackpropagationAndPerceptron.VentanaPrincipal.resources
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\BackpropagationAndPerceptron.Properties.Resources.resources
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\BackpropagationAndPerceptron.csproj.GenerateResource.cache
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\BackpropagationAndPerceptron.csproj.CoreCompileInputs.cache
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\BackpropagationAndPerceptron.csproj.CopyComplete
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\BackpropagationAndPerceptron.exe
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\BackpropagationAndPerceptron.pdb
