@@ -12,7 +12,7 @@ namespace Entity
 
         }
 
-        public RedNeuronal(int numeroEntradas, int numeroSalidas, int numeroPatrones, double[] entradas, double[] salidas, double[] patrones, int numeroIteraciones, double rataAprendizaje, double errorMaximoPermitido, int numeroCapas, int[] numeroNeuronasCapas, string[] funcionesActivacionCapas, string funcionActivacionCapaSalida, double[,] pesos, double[] umbrales)
+        public RedNeuronal(int numeroEntradas, int numeroSalidas, int numeroPatrones, double[] entradas, double[] salidas, double[] patrones, int numeroIteraciones, double rataAprendizaje, double errorMaximoPermitido, int numeroCapas, int[] numeroNeuronasCapas, string[] funcionesActivacionCapas, string funcionActivacionCapaSalida, List<double[,]> listaMatrizPesos, double[] umbrales)
         {
             NumeroEntradas = numeroEntradas;
             NumeroSalidas = numeroSalidas;
@@ -27,7 +27,7 @@ namespace Entity
             NumeroNeuronasCapas = numeroNeuronasCapas;
             FuncionesActivacionCapas = funcionesActivacionCapas;
             FuncionActivacionCapaSalida = funcionActivacionCapaSalida;
-            Pesos = pesos;
+            ListaMatrizPesos = listaMatrizPesos;
             Umbrales = umbrales;
         }
 
@@ -47,7 +47,7 @@ namespace Entity
         public string[] FuncionesActivacionCapas = { };
         public string FuncionActivacionCapaSalida { get; set; }
 
-        public double[,] Pesos = { };
+        public List<double[,]> ListaMatrizPesos;
         public double[] Umbrales = { };
 
     }

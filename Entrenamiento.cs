@@ -35,6 +35,7 @@ namespace BackpropagationAndPerceptron
         private int entradas;
         private int salidas;
         private int patrones;
+        private int contadorNumeroNeuronasSalida = 0;
 
         private List<string> registros = new List<string>();
         private List<float> Salidasdeseadas = new List<float>();
@@ -45,14 +46,15 @@ namespace BackpropagationAndPerceptron
         private double[] arraydeumbrales;
         private double[] arrayEntradas;
         private double[] arrayPatrones = { };
-        private double[,] arraydematrizdepesos;
+        private double[,] matrizdepesos;
         private float[,] arraydesalidasdeseadas;
 
 
         // datos para entrenar la red
         private int NumeroDeCapas = 0;
         public int[] ListaNumeroNeuronasCapas = { };
-        public string[] FuncionActivacionCapas = { };
+        public string[] ListauncionActivacionCapas = { };
+        public List<double[,]> ListaMatrizPesos;
 
         private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -124,7 +126,7 @@ namespace BackpropagationAndPerceptron
                 foreach (string registro in registros)
                 {
                     DtgvDatos.Rows.Add(registro.Split(' '));
-                    
+                    contadorNumeroNeuronasSalida ++;
                 }
                 DtgvDatos.AllowUserToAddRows = false;
 
@@ -177,7 +179,7 @@ namespace BackpropagationAndPerceptron
             for (int j = 0; j < NumeroDeCapas; j++)
             {
                 ListaNumeroNeuronasCapas[j] = Convert.ToInt32(DtgCapas.Rows[j].Cells[1].Value);
-                FuncionActivacionCapas[j] = DtgCapas.Rows[j].Cells[2].Value.ToString();
+                ListauncionActivacionCapas[j] = DtgCapas.Rows[j].Cells[2].Value.ToString();
             }
 
             BtnInicializarPU.Enabled = true;
@@ -187,17 +189,19 @@ namespace BackpropagationAndPerceptron
         
         private void BtnInicializarPU_Click(object sender, EventArgs e)
         {
+            ListaMatrizPesos = new List<double[,]> { };
+
             if (TxtTipoRed.SelectedItem.ToString().Equals("Perceptrón Multicapa"))
             {
                percetromMulticapaService = new PercetromMulticapaService();
                 arraydeumbrales = percetromMulticapaService.InicializarUmbrales(salidas);
-                arraydematrizdepesos = percetromMulticapaService.InicializarPesos(entradas, salidas);
+                ListaMatrizPesos =percetromMulticapaService.InicializarPesos(entradas, salidas, NumeroDeCapas, ListaNumeroNeuronasCapas, contadorNumeroNeuronasSalida);
     }
             else
             {
                 backPropagationService = new BackPropagationService();
                 arraydeumbrales = backPropagationService.InicializarUmbrales(salidas);
-                arraydematrizdepesos = backPropagationService.InicializarPesos(entradas,salidas);
+                ListaMatrizPesos = backPropagationService.InicializarPesos(entradas,salidas, NumeroDeCapas, ListaNumeroNeuronasCapas, contadorNumeroNeuronasSalida);
 
             }
 
@@ -215,7 +219,7 @@ namespace BackpropagationAndPerceptron
             NumeroDeCapas = Convert.ToInt32(TxtNumeroCapas.Value);
 
             ListaNumeroNeuronasCapas = new int[NumeroDeCapas];
-            FuncionActivacionCapas = new string[NumeroDeCapas];
+            ListauncionActivacionCapas = new string[NumeroDeCapas];
 
             DtgCapas.Rows.Add(NumeroDeCapas - 1);
             int cont = 1;
@@ -246,13 +250,13 @@ namespace BackpropagationAndPerceptron
 
                 percetronMulticapa.NumeroCapas = NumeroDeCapas;
                 percetronMulticapa.NumeroNeuronasCapas = ListaNumeroNeuronasCapas;
-                percetronMulticapa.FuncionesActivacionCapas = FuncionActivacionCapas;
+                percetronMulticapa.FuncionesActivacionCapas = ListauncionActivacionCapas;
                 percetronMulticapa.NumeroIteraciones = Convert.ToInt32(TxtNumeroIteraciones.Value.ToString());
                 percetronMulticapa.RataAprendizaje = Convert.ToDouble(TxtRataAprendizaje.Value.ToString());
                 percetronMulticapa.ErrorMaximoPermitido = Convert.ToDouble(TxtErrorMaximoPermitido.Value.ToString());
                 percetronMulticapa.FuncionActivacionCapaSalida = CbxFuncionActivacionCapaSalida.SelectedItem.ToString(); 
                 percetronMulticapa.Umbrales = arraydeumbrales;
-                percetronMulticapa.Pesos = arraydematrizdepesos;
+                percetronMulticapa.ListaMatrizPesos = ListaMatrizPesos;
 
 
             }
@@ -267,14 +271,32 @@ namespace BackpropagationAndPerceptron
 
                 backPropagation.NumeroCapas = NumeroDeCapas;
                 backPropagation.NumeroNeuronasCapas = ListaNumeroNeuronasCapas;
-                backPropagation.FuncionesActivacionCapas = FuncionActivacionCapas;
+                backPropagation.FuncionesActivacionCapas = ListauncionActivacionCapas;
                 backPropagation.NumeroIteraciones = Convert.ToInt32(TxtNumeroIteraciones.Value.ToString());
                 backPropagation.RataAprendizaje = Convert.ToDouble(TxtRataAprendizaje.Value.ToString());
                 backPropagation.ErrorMaximoPermitido = Convert.ToDouble(TxtErrorMaximoPermitido.Value.ToString());
                 backPropagation.FuncionActivacionCapaSalida = CbxFuncionActivacionCapaSalida.SelectedItem.ToString();
                 backPropagation.Umbrales = arraydeumbrales;
-                backPropagation.Pesos = arraydematrizdepesos;
+                backPropagation.ListaMatrizPesos = ListaMatrizPesos;
                 backPropagation.Patrones = arrayPatrones;
+
+
+                int cont = backPropagation.ListaMatrizPesos.Count;
+                for (int i = 0; i < cont; i++)
+                {
+                    double[,] valoresPrueba = backPropagation.ListaMatrizPesos[i];
+                    for (int f = 0; f < valoresPrueba.GetLength(0); f++)
+                    {
+                        for (int c = 0; c < valoresPrueba.GetLength(1); c++)
+                        {
+                            Console.Write(valoresPrueba[f, c] + " ");
+                        }
+                        Console.WriteLine();
+                        
+                    }
+                    Console.Write("\n \n \n \n");
+
+                }
 
 
                 MessageBox.Show("Numero entradas: " + backPropagation.NumeroEntradas.ToString() + "" +
@@ -288,7 +310,7 @@ namespace BackpropagationAndPerceptron
                                 "ErrorMaximoPermitido: " + backPropagation.ErrorMaximoPermitido.ToString() + "" +
                                 "FuncionActivacionCapaSalida: " + backPropagation.FuncionActivacionCapaSalida.ToString() + "" +
                                 "Umbrales: " + backPropagation.Umbrales[0].ToString() + "" +
-                                "Pesos: " + backPropagation.Pesos[0, 0].ToString() + "" , "algo");
+                                "Pesos: " + backPropagation.ListaMatrizPesos[0] + "", "algo");
 
                 
             }

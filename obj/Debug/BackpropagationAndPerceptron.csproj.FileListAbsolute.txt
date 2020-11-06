@@ -64,3 +64,20 @@ C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\Backpropagatio
 C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\BackpropagationAndPerceptron.csproj.CopyComplete
 C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\BackpropagationAndPerceptron.exe
 C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\BackpropagationAndPerceptron.pdb
+C:\Users\Ricky\Documents\proyectos\TrabajoIA\bin\Debug\BackpropagationAndPerceptron.exe.config
+C:\Users\Ricky\Documents\proyectos\TrabajoIA\bin\Debug\BackpropagationAndPerceptron.exe
+C:\Users\Ricky\Documents\proyectos\TrabajoIA\bin\Debug\BackpropagationAndPerceptron.pdb
+C:\Users\Ricky\Documents\proyectos\TrabajoIA\bin\Debug\BLL.dll
+C:\Users\Ricky\Documents\proyectos\TrabajoIA\bin\Debug\Entity.dll
+C:\Users\Ricky\Documents\proyectos\TrabajoIA\bin\Debug\BLL.pdb
+C:\Users\Ricky\Documents\proyectos\TrabajoIA\bin\Debug\Entity.pdb
+C:\Users\Ricky\Documents\proyectos\TrabajoIA\obj\Debug\BackpropagationAndPerceptron.csprojAssemblyReference.cache
+C:\Users\Ricky\Documents\proyectos\TrabajoIA\obj\Debug\BackpropagationAndPerceptron.Entrenamiento.resources
+C:\Users\Ricky\Documents\proyectos\TrabajoIA\obj\Debug\BackpropagationAndPerceptron.Simulacion.resources
+C:\Users\Ricky\Documents\proyectos\TrabajoIA\obj\Debug\BackpropagationAndPerceptron.VentanaPrincipal.resources
+C:\Users\Ricky\Documents\proyectos\TrabajoIA\obj\Debug\BackpropagationAndPerceptron.Properties.Resources.resources
+C:\Users\Ricky\Documents\proyectos\TrabajoIA\obj\Debug\BackpropagationAndPerceptron.csproj.GenerateResource.cache
+C:\Users\Ricky\Documents\proyectos\TrabajoIA\obj\Debug\BackpropagationAndPerceptron.csproj.CoreCompileInputs.cache
+C:\Users\Ricky\Documents\proyectos\TrabajoIA\obj\Debug\BackpropagationAndPerceptron.csproj.CopyComplete
+C:\Users\Ricky\Documents\proyectos\TrabajoIA\obj\Debug\BackpropagationAndPerceptron.exe
+C:\Users\Ricky\Documents\proyectos\TrabajoIA\obj\Debug\BackpropagationAndPerceptron.pdb
