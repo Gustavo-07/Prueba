@@ -12,25 +12,31 @@ namespace Entity
 
         }
 
-        public RedNeuronal(int numeroEntradas, int numeroSalidas, int numeroPatrones, int numeroIteraciones, double rataAprendizaje, double errorMaximoPermitido, int numeroCapas, int[] numeroNeuronasCapas, string[] funcionesActivacionCapas, double[,] pesos, double[] umbrales, string funcionActivacionCapaSalida)
+        public RedNeuronal(int numeroEntradas, int numeroSalidas, int numeroPatrones, double[] entradas, double[] salidas, double[] patrones, int numeroIteraciones, double rataAprendizaje, double errorMaximoPermitido, int numeroCapas, int[] numeroNeuronasCapas, string[] funcionesActivacionCapas, string funcionActivacionCapaSalida, double[,] pesos, double[] umbrales)
         {
             NumeroEntradas = numeroEntradas;
             NumeroSalidas = numeroSalidas;
             NumeroPatrones = numeroPatrones;
+            Entradas = entradas;
+            Salidas = salidas;
+            Patrones = patrones;
             NumeroIteraciones = numeroIteraciones;
             RataAprendizaje = rataAprendizaje;
             ErrorMaximoPermitido = errorMaximoPermitido;
             NumeroCapas = numeroCapas;
             NumeroNeuronasCapas = numeroNeuronasCapas;
             FuncionesActivacionCapas = funcionesActivacionCapas;
+            FuncionActivacionCapaSalida = funcionActivacionCapaSalida;
             Pesos = pesos;
             Umbrales = umbrales;
-            FuncionActivacionCapaSalida = funcionActivacionCapaSalida;
         }
 
         public int NumeroEntradas { get; set; }
         public int NumeroSalidas { get; set; }
         public int NumeroPatrones { get; set; }
+        public double[] Entradas = { };
+        public double[] Salidas = { };
+        public double[] Patrones = { };
         public int NumeroIteraciones { get; set; }
         public double RataAprendizaje { get; set; }
         public double ErrorMaximoPermitido { get; set; }
