@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ricky\\Downloads\\PerceptronMulticapaAndBackpropagation\\Entity\\Entity.csproj",
+      "projectUniqueName": "C:\\Users\\Ricky\\Documents\\proyectos\\TrabajoIA\\Entity\\Entity.csproj",
       "projectName": "Entity",
-      "projectPath": "C:\\Users\\Ricky\\Downloads\\PerceptronMulticapaAndBackpropagation\\Entity\\Entity.csproj",
+      "projectPath": "C:\\Users\\Ricky\\Documents\\proyectos\\TrabajoIA\\Entity\\Entity.csproj",
       "packagesPath": "C:\\Users\\Ricky\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ricky\\Downloads\\PerceptronMulticapaAndBackpropagation\\Entity\\obj\\",
+      "outputPath": "C:\\Users\\Ricky\\Documents\\proyectos\\TrabajoIA\\Entity\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

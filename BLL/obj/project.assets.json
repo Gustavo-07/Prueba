@@ -220,11 +220,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ricky\\Downloads\\PerceptronMulticapaAndBackpropagation\\BLL\\BLL.csproj",
+      "projectUniqueName": "C:\\Users\\Ricky\\Documents\\proyectos\\TrabajoIA\\BLL\\BLL.csproj",
       "projectName": "BLL",
-      "projectPath": "C:\\Users\\Ricky\\Downloads\\PerceptronMulticapaAndBackpropagation\\BLL\\BLL.csproj",
+      "projectPath": "C:\\Users\\Ricky\\Documents\\proyectos\\TrabajoIA\\BLL\\BLL.csproj",
       "packagesPath": "C:\\Users\\Ricky\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ricky\\Downloads\\PerceptronMulticapaAndBackpropagation\\BLL\\obj\\",
+      "outputPath": "C:\\Users\\Ricky\\Documents\\proyectos\\TrabajoIA\\BLL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -243,11 +243,11 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\Ricky\\Downloads\\PerceptronMulticapaAndBackpropagation\\DALL\\DALL.csproj": {
-              "projectPath": "C:\\Users\\Ricky\\Downloads\\PerceptronMulticapaAndBackpropagation\\DALL\\DALL.csproj"
+            "C:\\Users\\Ricky\\Documents\\proyectos\\TrabajoIA\\DALL\\DALL.csproj": {
+              "projectPath": "C:\\Users\\Ricky\\Documents\\proyectos\\TrabajoIA\\DALL\\DALL.csproj"
             },
-            "C:\\Users\\Ricky\\Downloads\\PerceptronMulticapaAndBackpropagation\\Entity\\Entity.csproj": {
-              "projectPath": "C:\\Users\\Ricky\\Downloads\\PerceptronMulticapaAndBackpropagation\\Entity\\Entity.csproj"
+            "C:\\Users\\Ricky\\Documents\\proyectos\\TrabajoIA\\Entity\\Entity.csproj": {
+              "projectPath": "C:\\Users\\Ricky\\Documents\\proyectos\\TrabajoIA\\Entity\\Entity.csproj"
             }
           }
         }
