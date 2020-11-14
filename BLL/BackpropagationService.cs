@@ -8,5 +8,7 @@ namespace BLL
 {
     public class  BackPropagationService : RedNeuronalService
     {
+
+
     }
 }

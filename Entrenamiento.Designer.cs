@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.Menu = new System.Windows.Forms.MenuStrip();
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,29 +54,27 @@
             this.BtnGuardarRed = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.DtgCapas = new System.Windows.Forms.DataGridView();
-            this.Capas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NumeroNeuronas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FuncionActivacion = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.CbxFuncionActivacionCapaSalida = new System.Windows.Forms.ComboBox();
             this.TxtTipoRed = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.DtgvDatos = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
-            this.BtnAgregar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.TxtNumeroCapas = new System.Windows.Forms.NumericUpDown();
             this.BtnConfigurar = new System.Windows.Forms.Button();
+            this.DtgvDatos = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lsterrores = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.GraficaComportamientoSalida = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.graficaErroriteracion = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.LabelEntradaSalidaPatrones = new System.Windows.Forms.Label();
             this.BtnSimular = new System.Windows.Forms.Button();
             this.LblResultados = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.label11 = new System.Windows.Forms.Label();
+            this.GraficaComportamientoSalidas2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Menu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNumeroIteraciones)).BeginInit();
@@ -82,12 +82,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtRataAprendizaje)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DtgCapas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DtgvDatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNumeroCapas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgvDatos)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GraficaComportamientoSalida)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.graficaErroriteracion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GraficaComportamientoSalidas2)).BeginInit();
             this.SuspendLayout();
             // 
             // Menu
@@ -101,6 +102,7 @@
             this.Menu.Size = new System.Drawing.Size(1263, 24);
             this.Menu.TabIndex = 1;
             this.Menu.Text = "menuStrip1";
+            this.Menu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.Menu_ItemClicked);
             // 
             // inicioToolStripMenuItem
             // 
@@ -151,11 +153,11 @@
             // BtnCargarDatos
             // 
             this.BtnCargarDatos.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCargarDatos.Location = new System.Drawing.Point(12, 89);
+            this.BtnCargarDatos.Location = new System.Drawing.Point(12, 67);
             this.BtnCargarDatos.Name = "BtnCargarDatos";
-            this.BtnCargarDatos.Size = new System.Drawing.Size(128, 31);
+            this.BtnCargarDatos.Size = new System.Drawing.Size(128, 25);
             this.BtnCargarDatos.TabIndex = 5;
-            this.BtnCargarDatos.Text = "Cargar datos";
+            this.BtnCargarDatos.Text = "Cargar Datos";
             this.BtnCargarDatos.UseVisualStyleBackColor = true;
             this.BtnCargarDatos.Click += new System.EventHandler(this.BtnCargarDatos_Click);
             // 
@@ -175,7 +177,7 @@
             // 
             this.BtnEntrenar.Enabled = false;
             this.BtnEntrenar.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEntrenar.Location = new System.Drawing.Point(505, 227);
+            this.BtnEntrenar.Location = new System.Drawing.Point(505, 171);
             this.BtnEntrenar.Name = "BtnEntrenar";
             this.BtnEntrenar.Size = new System.Drawing.Size(180, 23);
             this.BtnEntrenar.TabIndex = 7;
@@ -186,9 +188,9 @@
             // BtnLimpiar
             // 
             this.BtnLimpiar.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnLimpiar.Location = new System.Drawing.Point(1046, 233);
+            this.BtnLimpiar.Location = new System.Drawing.Point(505, 261);
             this.BtnLimpiar.Name = "BtnLimpiar";
-            this.BtnLimpiar.Size = new System.Drawing.Size(166, 24);
+            this.BtnLimpiar.Size = new System.Drawing.Size(180, 24);
             this.BtnLimpiar.TabIndex = 8;
             this.BtnLimpiar.Text = "Limpiar";
             this.BtnLimpiar.UseVisualStyleBackColor = true;
@@ -205,7 +207,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(703, 130);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(330, 127);
+            this.groupBox1.Size = new System.Drawing.Size(263, 155);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Parámetros de entrenamiento";
@@ -218,7 +220,7 @@
             0,
             0,
             0});
-            this.TxtNumeroIteraciones.Location = new System.Drawing.Point(209, 21);
+            this.TxtNumeroIteraciones.Location = new System.Drawing.Point(150, 23);
             this.TxtNumeroIteraciones.Maximum = new decimal(new int[] {
             5000,
             0,
@@ -247,7 +249,7 @@
             0,
             0,
             196608});
-            this.TxtErrorMaximoPermitido.Location = new System.Drawing.Point(209, 90);
+            this.TxtErrorMaximoPermitido.Location = new System.Drawing.Point(150, 90);
             this.TxtErrorMaximoPermitido.Maximum = new decimal(new int[] {
             3,
             0,
@@ -266,7 +268,7 @@
             0,
             0,
             65536});
-            this.TxtRataAprendizaje.Location = new System.Drawing.Point(209, 57);
+            this.TxtRataAprendizaje.Location = new System.Drawing.Point(150, 57);
             this.TxtRataAprendizaje.Maximum = new decimal(new int[] {
             5,
             0,
@@ -285,6 +287,7 @@
             0,
             0,
             65536});
+            this.TxtRataAprendizaje.ValueChanged += new System.EventHandler(this.TxtRataAprendizaje_ValueChanged);
             // 
             // label4
             // 
@@ -317,9 +320,9 @@
             // 
             this.BtnGuardarRed.Enabled = false;
             this.BtnGuardarRed.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarRed.Location = new System.Drawing.Point(1046, 141);
+            this.BtnGuardarRed.Location = new System.Drawing.Point(505, 200);
             this.BtnGuardarRed.Name = "BtnGuardarRed";
-            this.BtnGuardarRed.Size = new System.Drawing.Size(166, 24);
+            this.BtnGuardarRed.Size = new System.Drawing.Size(180, 24);
             this.BtnGuardarRed.TabIndex = 10;
             this.BtnGuardarRed.Text = "Guardar red";
             this.BtnGuardarRed.UseVisualStyleBackColor = true;
@@ -331,7 +334,6 @@
             this.groupBox2.Controls.Add(this.TxtTipoRed);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.BtnAgregar);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.TxtNumeroCapas);
             this.groupBox2.Controls.Add(this.BtnConfigurar);
@@ -345,39 +347,12 @@
             // 
             // DtgCapas
             // 
+            this.DtgCapas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DtgCapas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DtgCapas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Capas,
-            this.NumeroNeuronas,
-            this.FuncionActivacion});
-            this.DtgCapas.Location = new System.Drawing.Point(21, 123);
+            this.DtgCapas.Location = new System.Drawing.Point(24, 138);
             this.DtgCapas.Name = "DtgCapas";
-            this.DtgCapas.Size = new System.Drawing.Size(403, 220);
-            this.DtgCapas.TabIndex = 34;
-            this.DtgCapas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgCapas_CellContentClick);
-            // 
-            // Capas
-            // 
-            this.Capas.HeaderText = "Capas";
-            this.Capas.Name = "Capas";
-            this.Capas.ReadOnly = true;
-            this.Capas.Width = 70;
-            // 
-            // NumeroNeuronas
-            // 
-            this.NumeroNeuronas.HeaderText = "# de Neuronas";
-            this.NumeroNeuronas.Name = "NumeroNeuronas";
-            this.NumeroNeuronas.Width = 140;
-            // 
-            // FuncionActivacion
-            // 
-            this.FuncionActivacion.HeaderText = "Funcion de activación";
-            this.FuncionActivacion.Items.AddRange(new object[] {
-            "Sigmoidal",
-            "Gaussiana",
-            "Sinusoidal"});
-            this.FuncionActivacion.Name = "FuncionActivacion";
-            this.FuncionActivacion.Width = 150;
+            this.DtgCapas.Size = new System.Drawing.Size(400, 171);
+            this.DtgCapas.TabIndex = 33;
             // 
             // CbxFuncionActivacionCapaSalida
             // 
@@ -385,9 +360,13 @@
             this.CbxFuncionActivacionCapaSalida.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CbxFuncionActivacionCapaSalida.FormattingEnabled = true;
             this.CbxFuncionActivacionCapaSalida.Items.AddRange(new object[] {
-            "Sigmoidal",
-            "Gaussiana",
-            "Sinusoidal"});
+            "Lineal.",
+            "Bipolar.",
+            "Gausiana.",
+            "Seno.",
+            "Coseno.",
+            "Tangente hiperbólica.",
+            "Sigmoidal."});
             this.CbxFuncionActivacionCapaSalida.Location = new System.Drawing.Point(279, 352);
             this.CbxFuncionActivacionCapaSalida.Name = "CbxFuncionActivacionCapaSalida";
             this.CbxFuncionActivacionCapaSalida.Size = new System.Drawing.Size(145, 24);
@@ -418,16 +397,6 @@
             this.label5.TabIndex = 19;
             this.label5.Text = "Función activación de la capa de salida";
             // 
-            // DtgvDatos
-            // 
-            this.DtgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DtgvDatos.Enabled = false;
-            this.DtgvDatos.Location = new System.Drawing.Point(12, 124);
-            this.DtgvDatos.Name = "DtgvDatos";
-            this.DtgvDatos.Size = new System.Drawing.Size(454, 133);
-            this.DtgvDatos.TabIndex = 17;
-            this.DtgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgvDatos_CellContentClick);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -437,18 +406,6 @@
             this.label7.Size = new System.Drawing.Size(68, 15);
             this.label7.TabIndex = 16;
             this.label7.Text = "Tipo de red";
-            // 
-            // BtnAgregar
-            // 
-            this.BtnAgregar.Enabled = false;
-            this.BtnAgregar.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAgregar.Location = new System.Drawing.Point(231, 92);
-            this.BtnAgregar.Name = "BtnAgregar";
-            this.BtnAgregar.Size = new System.Drawing.Size(193, 25);
-            this.BtnAgregar.TabIndex = 18;
-            this.BtnAgregar.Text = "Agregar";
-            this.BtnAgregar.UseVisualStyleBackColor = true;
-            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // label6
             // 
@@ -462,20 +419,21 @@
             // TxtNumeroCapas
             // 
             this.TxtNumeroCapas.Enabled = false;
-            this.TxtNumeroCapas.Location = new System.Drawing.Point(163, 93);
+            this.TxtNumeroCapas.Location = new System.Drawing.Point(200, 93);
             this.TxtNumeroCapas.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.TxtNumeroCapas.Name = "TxtNumeroCapas";
-            this.TxtNumeroCapas.Size = new System.Drawing.Size(62, 22);
+            this.TxtNumeroCapas.Size = new System.Drawing.Size(224, 22);
             this.TxtNumeroCapas.TabIndex = 14;
             this.TxtNumeroCapas.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            this.TxtNumeroCapas.ValueChanged += new System.EventHandler(this.TxtNumeroCapas_ValueChanged);
             // 
             // BtnConfigurar
             // 
@@ -489,11 +447,21 @@
             this.BtnConfigurar.UseVisualStyleBackColor = true;
             this.BtnConfigurar.Click += new System.EventHandler(this.BtnConfigurar_Click);
             // 
+            // DtgvDatos
+            // 
+            this.DtgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DtgvDatos.Enabled = false;
+            this.DtgvDatos.Location = new System.Drawing.Point(12, 124);
+            this.DtgvDatos.Name = "DtgvDatos";
+            this.DtgvDatos.Size = new System.Drawing.Size(454, 133);
+            this.DtgvDatos.TabIndex = 17;
+            this.DtgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgvDatos_CellContentClick);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(109, 44);
+            this.label8.Location = new System.Drawing.Point(1044, 79);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(128, 26);
             this.label8.TabIndex = 37;
@@ -514,7 +482,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(419, 44);
+            this.label10.Location = new System.Drawing.Point(450, 28);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(186, 26);
             this.label10.TabIndex = 34;
@@ -532,9 +500,9 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.GraficaComportamientoSalidas2);
             this.groupBox3.Controls.Add(this.GraficaComportamientoSalida);
-            this.groupBox3.Controls.Add(this.chart1);
-            this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.lsterrores);
@@ -550,28 +518,31 @@
             this.GraficaComportamientoSalida.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.GraficaComportamientoSalida.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.GraficaComportamientoSalida.ChartAreas.Add(chartArea2);
             this.GraficaComportamientoSalida.Enabled = false;
-            this.GraficaComportamientoSalida.Location = new System.Drawing.Point(375, 73);
+            this.GraficaComportamientoSalida.Location = new System.Drawing.Point(50, 58);
             this.GraficaComportamientoSalida.Name = "GraficaComportamientoSalida";
             this.GraficaComportamientoSalida.Size = new System.Drawing.Size(309, 243);
             this.GraficaComportamientoSalida.TabIndex = 39;
             this.GraficaComportamientoSalida.Text = "GraficaComportamientoSalidas";
             // 
-            // chart1
+            // graficaErroriteracion
             // 
-            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.graficaErroriteracion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            this.chart1.Enabled = false;
-            this.chart1.Location = new System.Drawing.Point(26, 73);
-            this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(328, 243);
-            this.chart1.TabIndex = 38;
-            this.chart1.Text = "GraficaComportamientoError";
+            chartArea3.Name = "ChartArea1";
+            this.graficaErroriteracion.ChartAreas.Add(chartArea3);
+            this.graficaErroriteracion.Enabled = false;
+            this.graficaErroriteracion.Location = new System.Drawing.Point(986, 111);
+            this.graficaErroriteracion.Name = "graficaErroriteracion";
+            series1.ChartArea = "ChartArea1";
+            series1.Name = "Error por Iteracion";
+            this.graficaErroriteracion.Series.Add(series1);
+            this.graficaErroriteracion.Size = new System.Drawing.Size(226, 180);
+            this.graficaErroriteracion.TabIndex = 38;
+            this.graficaErroriteracion.Text = "GraficaComportamientoError";
             // 
             // LabelEntradaSalidaPatrones
             // 
@@ -586,9 +557,9 @@
             // 
             this.BtnSimular.Enabled = false;
             this.BtnSimular.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSimular.Location = new System.Drawing.Point(1046, 184);
+            this.BtnSimular.Location = new System.Drawing.Point(505, 230);
             this.BtnSimular.Name = "BtnSimular";
-            this.BtnSimular.Size = new System.Drawing.Size(166, 24);
+            this.BtnSimular.Size = new System.Drawing.Size(180, 24);
             this.BtnSimular.TabIndex = 32;
             this.BtnSimular.Text = "Simular red";
             this.BtnSimular.UseVisualStyleBackColor = true;
@@ -596,16 +567,44 @@
             // LblResultados
             // 
             this.LblResultados.AutoSize = true;
-            this.LblResultados.Location = new System.Drawing.Point(197, 91);
+            this.LblResultados.Location = new System.Drawing.Point(209, 79);
             this.LblResultados.Name = "LblResultados";
             this.LblResultados.Size = new System.Drawing.Size(0, 13);
             this.LblResultados.TabIndex = 33;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(106, 28);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(186, 26);
+            this.label11.TabIndex = 41;
+            this.label11.Text = "Comportamiento de la salida obtenida \r\nrespecto a la deseada";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // GraficaComportamientoSalidas2
+            // 
+            this.GraficaComportamientoSalidas2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea1.Name = "ChartArea1";
+            this.GraficaComportamientoSalidas2.ChartAreas.Add(chartArea1);
+            this.GraficaComportamientoSalidas2.Enabled = false;
+            this.GraficaComportamientoSalidas2.Location = new System.Drawing.Point(380, 58);
+            this.GraficaComportamientoSalidas2.Name = "GraficaComportamientoSalidas2";
+            this.GraficaComportamientoSalidas2.Size = new System.Drawing.Size(309, 243);
+            this.GraficaComportamientoSalidas2.TabIndex = 40;
+            this.GraficaComportamientoSalidas2.Text = "GraficaComportamientoSalidas";
+            this.GraficaComportamientoSalidas2.Click += new System.EventHandler(this.GraficaComportamientoSalidas2_Click);
             // 
             // Entrenamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1263, 728);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.graficaErroriteracion);
             this.Controls.Add(this.LblResultados);
             this.Controls.Add(this.BtnSimular);
             this.Controls.Add(this.LabelEntradaSalidaPatrones);
@@ -622,6 +621,7 @@
             this.Controls.Add(this.Menu);
             this.Name = "Entrenamiento";
             this.Text = "Entrenamiento";
+            this.Load += new System.EventHandler(this.Entrenamiento_Load);
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -632,13 +632,14 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DtgCapas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DtgvDatos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNumeroCapas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgvDatos)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GraficaComportamientoSalida)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.graficaErroriteracion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GraficaComportamientoSalidas2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -678,17 +679,15 @@
         private System.Windows.Forms.ListBox lsterrores;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataVisualization.Charting.Chart GraficaComportamientoSalida;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart graficaErroriteracion;
         private System.Windows.Forms.Label LabelEntradaSalidaPatrones;
         private System.Windows.Forms.Button BtnSimular;
-        private System.Windows.Forms.Button BtnAgregar;
         private System.Windows.Forms.Label LblResultados;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.ComboBox CbxFuncionActivacionCapaSalida;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView DtgCapas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Capas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NumeroNeuronas;
-        private System.Windows.Forms.DataGridViewComboBoxColumn FuncionActivacion;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DataVisualization.Charting.Chart GraficaComportamientoSalidas2;
     }
 }

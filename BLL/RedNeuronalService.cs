@@ -1,6 +1,7 @@
 ﻿using System;
 using Entity;
-using DALL; 
+using DALL;
+using System.Collections.Generic;
 
 namespace BLL
 {
@@ -11,23 +12,8 @@ namespace BLL
         double[] umbrales = { };
         double errorIteracion = 0;
         double[] patronEntradas = { };
-        public void Entrenar(RedNeuronal redNeuronal)
-        {
-            //CALCULAR LAS SALIDAS DE LAS NEURONAS QUE SE ENCUENTRAN EN LAS CAPAS OCULTAS
 
-           
-            int contador = 1;
-            errorIteracion = 1000;
-
-            while (redNeuronal.ErrorMaximoPermitido < errorIteracion && contador < redNeuronal.NumeroIteraciones)
-            {
-            }
-        }
-
-        public void Simular(RedNeuronal redNeuronal)
-        {
-
-        }
+      
 
         public double[] InicializarUmbrales(int NumeroSalidas)
         {
