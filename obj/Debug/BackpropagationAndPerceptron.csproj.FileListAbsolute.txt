@@ -64,3 +64,4 @@ C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\Backpropagatio
 C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\BackpropagationAndPerceptron.csproj.CopyComplete
 C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\BackpropagationAndPerceptron.exe
 C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\BackpropagationAndPerceptron.pdb
+C:\Users\Acer\Desktop\SEGUNDO CORTE INTELIGENCIA\Prueba\obj\Debug\BackpropagationAndPerceptron.SimulacionInterna.resources

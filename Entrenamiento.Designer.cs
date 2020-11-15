@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.Menu = new System.Windows.Forms.MenuStrip();
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,14 +67,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.lsterrores = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.GraficaComportamientoSalidas2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.GraficaComportamientoSalida = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.graficaErroriteracion = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.LabelEntradaSalidaPatrones = new System.Windows.Forms.Label();
             this.BtnSimular = new System.Windows.Forms.Button();
             this.LblResultados = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.label11 = new System.Windows.Forms.Label();
-            this.GraficaComportamientoSalidas2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Menu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNumeroIteraciones)).BeginInit();
@@ -85,10 +85,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtNumeroCapas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgvDatos)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GraficaComportamientoSalidas2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GraficaComportamientoSalida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.graficaErroriteracion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GraficaComportamientoSalidas2)).BeginInit();
             this.SuspendLayout();
             // 
             // Menu
@@ -326,6 +326,7 @@
             this.BtnGuardarRed.TabIndex = 10;
             this.BtnGuardarRed.Text = "Guardar red";
             this.BtnGuardarRed.UseVisualStyleBackColor = true;
+            this.BtnGuardarRed.Click += new System.EventHandler(this.BtnGuardarRed_Click);
             // 
             // groupBox2
             // 
@@ -513,65 +514,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Resultados del entrenamiento";
             // 
-            // GraficaComportamientoSalida
-            // 
-            this.GraficaComportamientoSalida.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea1";
-            this.GraficaComportamientoSalida.ChartAreas.Add(chartArea2);
-            this.GraficaComportamientoSalida.Enabled = false;
-            this.GraficaComportamientoSalida.Location = new System.Drawing.Point(50, 58);
-            this.GraficaComportamientoSalida.Name = "GraficaComportamientoSalida";
-            this.GraficaComportamientoSalida.Size = new System.Drawing.Size(309, 243);
-            this.GraficaComportamientoSalida.TabIndex = 39;
-            this.GraficaComportamientoSalida.Text = "GraficaComportamientoSalidas";
-            // 
-            // graficaErroriteracion
-            // 
-            this.graficaErroriteracion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea3.Name = "ChartArea1";
-            this.graficaErroriteracion.ChartAreas.Add(chartArea3);
-            this.graficaErroriteracion.Enabled = false;
-            this.graficaErroriteracion.Location = new System.Drawing.Point(986, 111);
-            this.graficaErroriteracion.Name = "graficaErroriteracion";
-            series1.ChartArea = "ChartArea1";
-            series1.Name = "Error por Iteracion";
-            this.graficaErroriteracion.Series.Add(series1);
-            this.graficaErroriteracion.Size = new System.Drawing.Size(226, 180);
-            this.graficaErroriteracion.TabIndex = 38;
-            this.graficaErroriteracion.Text = "GraficaComportamientoError";
-            // 
-            // LabelEntradaSalidaPatrones
-            // 
-            this.LabelEntradaSalidaPatrones.AutoSize = true;
-            this.LabelEntradaSalidaPatrones.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelEntradaSalidaPatrones.Location = new System.Drawing.Point(183, 97);
-            this.LabelEntradaSalidaPatrones.Name = "LabelEntradaSalidaPatrones";
-            this.LabelEntradaSalidaPatrones.Size = new System.Drawing.Size(0, 15);
-            this.LabelEntradaSalidaPatrones.TabIndex = 18;
-            // 
-            // BtnSimular
-            // 
-            this.BtnSimular.Enabled = false;
-            this.BtnSimular.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSimular.Location = new System.Drawing.Point(505, 230);
-            this.BtnSimular.Name = "BtnSimular";
-            this.BtnSimular.Size = new System.Drawing.Size(180, 24);
-            this.BtnSimular.TabIndex = 32;
-            this.BtnSimular.Text = "Simular red";
-            this.BtnSimular.UseVisualStyleBackColor = true;
-            // 
-            // LblResultados
-            // 
-            this.LblResultados.AutoSize = true;
-            this.LblResultados.Location = new System.Drawing.Point(209, 79);
-            this.LblResultados.Name = "LblResultados";
-            this.LblResultados.Size = new System.Drawing.Size(0, 13);
-            this.LblResultados.TabIndex = 33;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -597,6 +539,67 @@
             this.GraficaComportamientoSalidas2.TabIndex = 40;
             this.GraficaComportamientoSalidas2.Text = "GraficaComportamientoSalidas";
             this.GraficaComportamientoSalidas2.Click += new System.EventHandler(this.GraficaComportamientoSalidas2_Click);
+            // 
+            // GraficaComportamientoSalida
+            // 
+            this.GraficaComportamientoSalida.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea2.Name = "ChartArea1";
+            this.GraficaComportamientoSalida.ChartAreas.Add(chartArea2);
+            this.GraficaComportamientoSalida.Enabled = false;
+            this.GraficaComportamientoSalida.Location = new System.Drawing.Point(50, 58);
+            this.GraficaComportamientoSalida.Name = "GraficaComportamientoSalida";
+            this.GraficaComportamientoSalida.Size = new System.Drawing.Size(309, 243);
+            this.GraficaComportamientoSalida.TabIndex = 39;
+            this.GraficaComportamientoSalida.Text = "GraficaComportamientoSalidas";
+            // 
+            // graficaErroriteracion
+            // 
+            this.graficaErroriteracion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea3.Name = "ChartArea1";
+            this.graficaErroriteracion.ChartAreas.Add(chartArea3);
+            this.graficaErroriteracion.Enabled = false;
+            this.graficaErroriteracion.Location = new System.Drawing.Point(986, 111);
+            this.graficaErroriteracion.Name = "graficaErroriteracion";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Name = "Error por Iteracion";
+            this.graficaErroriteracion.Series.Add(series1);
+            this.graficaErroriteracion.Size = new System.Drawing.Size(226, 180);
+            this.graficaErroriteracion.TabIndex = 38;
+            this.graficaErroriteracion.Text = "GraficaComportamientoError";
+            // 
+            // LabelEntradaSalidaPatrones
+            // 
+            this.LabelEntradaSalidaPatrones.AutoSize = true;
+            this.LabelEntradaSalidaPatrones.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelEntradaSalidaPatrones.Location = new System.Drawing.Point(183, 97);
+            this.LabelEntradaSalidaPatrones.Name = "LabelEntradaSalidaPatrones";
+            this.LabelEntradaSalidaPatrones.Size = new System.Drawing.Size(0, 15);
+            this.LabelEntradaSalidaPatrones.TabIndex = 18;
+            // 
+            // BtnSimular
+            // 
+            this.BtnSimular.Enabled = false;
+            this.BtnSimular.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSimular.Location = new System.Drawing.Point(505, 230);
+            this.BtnSimular.Name = "BtnSimular";
+            this.BtnSimular.Size = new System.Drawing.Size(180, 24);
+            this.BtnSimular.TabIndex = 32;
+            this.BtnSimular.Text = "Simular red";
+            this.BtnSimular.UseVisualStyleBackColor = true;
+            this.BtnSimular.Click += new System.EventHandler(this.BtnSimular_Click);
+            // 
+            // LblResultados
+            // 
+            this.LblResultados.AutoSize = true;
+            this.LblResultados.Location = new System.Drawing.Point(209, 79);
+            this.LblResultados.Name = "LblResultados";
+            this.LblResultados.Size = new System.Drawing.Size(0, 13);
+            this.LblResultados.TabIndex = 33;
             // 
             // Entrenamiento
             // 
@@ -636,10 +639,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.DtgvDatos)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GraficaComportamientoSalidas2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GraficaComportamientoSalida)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.graficaErroriteracion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GraficaComportamientoSalidas2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

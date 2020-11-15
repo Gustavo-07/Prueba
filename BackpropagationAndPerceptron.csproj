@@ -61,6 +61,12 @@
     <Compile Include="Simulacion.Designer.cs">
       <DependentUpon>Simulacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="SimulacionInterna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimulacionInterna.Designer.cs">
+      <DependentUpon>SimulacionInterna.cs</DependentUpon>
+    </Compile>
     <Compile Include="VentanaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Simulacion.resx">
       <DependentUpon>Simulacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimulacionInterna.resx">
+      <DependentUpon>SimulacionInterna.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaPrincipal.resx">
       <DependentUpon>VentanaPrincipal.cs</DependentUpon>

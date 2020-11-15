@@ -58,8 +58,11 @@ namespace BackpropagationAndPerceptron
         List<int> listadeiteraciones = new List<int>();
         string comboBox1 = "Regla Delta";
         Dictionary<int, float[,]> diccionariodearraydematrizdepesos = new Dictionary<int, float[,]>();
+        List<float[,]> ListDmp = new List<float[,]>();
         Dictionary<int, float[]> diccionariodearraydeumbrales = new Dictionary<int, float[]>();
+        List<float[,]> ListDu = new List<float[,]>();
         Dictionary<int, float[,]> diccionariodelassalidasdecapa = new Dictionary<int, float[,]>();
+        List<float[,]> ListDsc = new List<float[,]>();
 
         private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -628,13 +631,14 @@ namespace BackpropagationAndPerceptron
                     lsterrores.Items.Clear();
                     entrenando = 1;
                     EntrenamientodelaredPercetron();
+                    
                 }
                 else if (entrenando == 1)
                 {
                     EntrenamientodelaredPercetron();
                 }
 
-
+                BtnGuardarRed.Enabled = true;
             }
     
         }
@@ -809,10 +813,14 @@ namespace BackpropagationAndPerceptron
         {
             try
             {
-                File.Delete("Pesos.txt");
-                File.Delete("Umbrales.txt");
-                StreamWriter swp = new StreamWriter("Pesos.txt", true);
-                StreamWriter swu = new StreamWriter("Umbrales.txt", true);
+                //File.Delete("Pesos.txt");
+                //File.Delete("Umbrales.txt");
+
+                File.Delete(@"C:\Users\Acer\Desktop\Universidad Popular Del Cesar\Inteligemcia Artificial\UmbralesRed.txt");
+                File.Delete(@"C:\Users\Acer\Desktop\Universidad Popular Del Cesar\Inteligemcia Artificial\PesosRed.txt");
+
+                StreamWriter swp = new StreamWriter(@"C:\Users\Acer\Desktop\Universidad Popular Del Cesar\Inteligemcia Artificial\PesosRed.txt", true);
+                StreamWriter swu = new StreamWriter(@"C:\Users\Acer\Desktop\Universidad Popular Del Cesar\Inteligemcia Artificial\UmbralesRed.txt", true);
                 for (int i = 0; i < pesos.GetLength(0); i++)
                 {
                     for (int j = 0; j < pesos.GetLength(1); j++)
@@ -829,6 +837,63 @@ namespace BackpropagationAndPerceptron
                 }
                 swp.Close();
                 swu.Close();
+            }
+            catch (Exception)
+            { }
+        }
+
+
+        private void guardarConfiguracionRed()
+        {
+            try
+            {
+                //File.Delete("Pesos.txt");
+                //File.Delete("Umbrales.txt");
+
+                File.Delete(@"C:\Users\Acer\Desktop\Universidad Popular Del Cesar\Inteligemcia Artificial\ConfiguracionRed.txt");
+
+                StreamWriter swp = new StreamWriter(@"C:\Users\Acer\Desktop\Universidad Popular Del Cesar\Inteligemcia Artificial\ConfiguracionRed.txt", true);
+
+                ListDmp = diccionariodearraydematrizdepesos.Values.ToList();
+                
+
+           
+                swp.Write(entradas);
+                swp.Write(" ");
+                swp.Write(salidas);
+                swp.Write(" ");
+                swp.Write(patrones);
+                swp.WriteLine(" ");
+                for (int i = 0; i < patrones; i++)
+                {
+                    for (int j = 0; j < entradas; j++)
+                    {
+                        swp.Write(arraydeentradasdelared[i,j].ToString());
+                        swp.Write(" ");
+                    }
+                }
+
+                swp.WriteLine(" ");
+
+                for (int i = 0; i < salidas; i++)
+                  
+                for (int capa = 0; capa <= TxtNumeroCapas.Value; capa++)
+                {//Inicializamos las dimensiondes de los pesos y umbrales.
+                   
+
+                        swp.Write(arraydematrizdepesos[capa,i]);
+                        
+                }
+
+                
+                swp.WriteLine(" ");
+
+                swp.Write(CbxFuncionActivacionCapaSalida);
+
+
+
+                swp.Close();
+               
             }
             catch (Exception)
             { }
@@ -896,6 +961,29 @@ namespace BackpropagationAndPerceptron
         private void GraficaComportamientoSalidas2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnGuardarRed_Click(object sender, EventArgs e)
+        {
+            if (TxtTipoRed.SelectedItem.Equals("Perceptrón Multicapa"))
+            {
+                guardarConfiguracionRed();
+                MessageBox.Show("Se han guardado los pesos y umbrales optimos de la red Perceptron Multicapa");
+                
+            }
+            else
+            {
+                guardarConfiguracionRed();
+                MessageBox.Show("Se han guardado los pesos y umbrales optimos de la red Backpropagation");
+            }
+        }
+
+        private void BtnSimular_Click(object sender, EventArgs e)
+        {
+            SimulacionInterna sim = new SimulacionInterna(entradas, salidas, patrones, arraydeentradasdelared, arraydesalidasdeseadas,
+                      diccionariodearraydematrizdepesos, diccionariodearraydeumbrales, Convert.ToInt32(TxtNumeroCapas.Value), DtgCapas, CbxFuncionActivacionCapaSalida.SelectedItem.ToString());
+
+            sim.ShowDialog();
         }
     }
 }
