@@ -57,6 +57,7 @@ namespace BackpropagationAndPerceptron
         List<float[,]> ListDu = new List<float[,]>();
         Dictionary<int, float[,]> diccionariodelassalidasdecapa = new Dictionary<int, float[,]>();
         List<float[,]> ListDsc = new List<float[,]>();
+        Dictionary<int, float[]> diccionariodeerrornolinealdeneuronasporcapaoscultas = new Dictionary<int, float[]>();
 
         private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
