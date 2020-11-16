@@ -24,13 +24,6 @@ namespace BackpropagationAndPerceptron
 
         }
 
-        PercetronMulticapa percetronMulticapa = new PercetronMulticapa();
-        BackPropagation backPropagation;
-
-        PercetromMulticapaService percetromMulticapaService;
-        BackPropagationService backPropagationService;
-
-
         // datos para el cargue del data set y entradas salidas y patrones
         int posiciongrafica = 1;
         int entrenando = 0;
@@ -48,6 +41,7 @@ namespace BackpropagationAndPerceptron
         float[] arraydeerrordelospatrones;
         float[] arraydeerroreslineales;
         float[] arraydeumbrales;
+        float[] arraydeerrornolinealporneuronasdecapasocultas = null;
         float[,] arraydematrizdepesos;
         float[,] arraydeentradasdelared;
         float[,] arraydesalidasdeseadas;
@@ -557,8 +551,6 @@ namespace BackpropagationAndPerceptron
         private void BtnInicializarPU_Click(object sender, EventArgs e)
         {
 
-
-
             if (TxtTipoRed.SelectedItem.ToString().Equals("Perceptrón Multicapa"))
             {
 
@@ -596,7 +588,36 @@ namespace BackpropagationAndPerceptron
             }
             else
             {
-
+                conti = 1;
+                graficaErroriteracion.Series[0].Points.Clear();
+                for (int i = 0; i < salidas; i++)
+                    GraficaComportamientoSalidas2.Series[i].Points.Clear();
+                listadeiteraciones.Clear();
+                listadeerroresdeiteracion.Clear();
+                lsterrores.Items.Clear();
+                iteracion = 0;
+                diccionariodearraydematrizdepesos.Clear();
+                diccionariodearraydeumbrales.Clear();
+                for (int capa = 0; capa <= TxtNumeroCapas.Value; capa++)
+                {//Inicializamos las dimensiondes de los pesos y umbrales.
+                    if (capa == 0)
+                    {
+                        arraydeumbrales = new float[Convert.ToInt32(DtgCapas.Rows[capa].Cells[1].Value.ToString())];
+                        arraydematrizdepesos = new float[Convert.ToInt32(DtgCapas.Rows[capa].Cells[1].Value.ToString()), entradas];
+                    }
+                    else if (capa > 0 && capa < TxtNumeroCapas.Value)
+                    {
+                        arraydeumbrales = new float[Convert.ToInt32(DtgCapas.Rows[capa].Cells[1].Value.ToString())];
+                        arraydematrizdepesos = new float[Convert.ToInt32(DtgCapas.Rows[capa].Cells[1].Value.ToString()), Convert.ToInt32(DtgCapas.Rows[capa - 1].Cells[1].Value.ToString())];
+                    }
+                    else if (capa == TxtNumeroCapas.Value)
+                    {
+                        arraydeumbrales = new float[salidas];
+                        arraydematrizdepesos = new float[salidas, Convert.ToInt32(DtgCapas.Rows[capa - 1].Cells[1].Value.ToString())];
+                    }
+                    diccionariodearraydeumbrales.Add(capa, arraydeumbrales);
+                    diccionariodearraydematrizdepesos.Add(capa, arraydematrizdepesos);
+                }
 
             }
 
@@ -639,6 +660,20 @@ namespace BackpropagationAndPerceptron
                 }
 
                 BtnGuardarRed.Enabled = true;
+            }
+            else
+            {
+                if (entrenando == 0)
+                {
+                    listadeerroresdeiteracion.Clear();
+                    lsterrores.Items.Clear();
+                    entrenando = 1;
+                    EntrenamientodelaredBackpropagation();
+                }
+                else if (entrenando == 1)
+                {
+                    EntrenamientodelaredBackpropagation();
+                }
             }
     
         }
@@ -769,6 +804,194 @@ namespace BackpropagationAndPerceptron
                 
             }
         }
+
+
+        private void EntrenamientodelaredBackpropagation()
+        {
+            iteracion = iteracion + Convert.ToInt32(TxtNumeroIteraciones.Value);
+            ratadeaprendizaje = float.Parse(TxtRataAprendizaje.Value.ToString());
+            errormaximopermitido = float.Parse(TxtErrorMaximoPermitido.Value.ToString());
+            errordeiteracion = 1000;
+            while (errormaximopermitido < errordeiteracion && conti <= iteracion)
+            {
+                List<string> listadesalidasdelared = new List<string>();
+                List<int> numerodepatrones = new List<int>();
+                arraydeerrordelospatrones = new float[patrones];
+                for (int pt = 0; pt < patrones; pt++)
+                {
+                    float[] arraydeerroresdeneuronasendiccionario = null;
+                    float[,] arraydesalidasdecapasocultasanterior = null;
+                    diccionariodeerrornolinealdeneuronasporcapaoscultas.Clear();
+                    numerodepatrones.Add(pt + 1);
+                    diccionariodelassalidasdecapa.Clear();
+                    for (int cp = 0; cp <= TxtNumeroCapas.Value; cp++)
+                    {
+                        arraydematrizdepesos = diccionariodearraydematrizdepesos[cp];
+                        arraydeumbrales = diccionariodearraydeumbrales[cp];
+                        arraydesalidadelacapaactual = new float[patrones, arraydematrizdepesos.GetLength(0)];
+                        if (cp > 0)
+                            arraydesalidadelacapaanterior = diccionariodelassalidasdecapa[cp - 1];
+                        for (int i = 0; i < arraydematrizdepesos.GetLength(0); i++)
+                        {
+                            arraydesalidadelacapaactual[pt, i] = 0;
+                            if (cp == 0)
+                            {
+                                for (int j = 0; j < entradas; j++)
+                                    arraydesalidadelacapaactual[pt, i] += arraydeentradasdelared[pt, j] * arraydematrizdepesos[i, j];
+                            }
+                            else if (cp > 0 && cp < TxtNumeroCapas.Value)
+                            {
+                                for (int j = 0; j < arraydematrizdepesos.GetLength(1); j++)
+                                    arraydesalidadelacapaactual[pt, i] += arraydesalidadelacapaanterior[pt, j] * arraydematrizdepesos[i, j];
+                            }
+                            else if (cp == TxtNumeroCapas.Value)
+                            {
+                                for (int j = 0; j < arraydematrizdepesos.GetLength(1); j++)
+                                    arraydesalidadelacapaactual[pt, i] += arraydesalidadelacapaanterior[pt, j] * arraydematrizdepesos[i, j];
+                            }
+                            arraydesalidadelacapaactual[pt, i] -= arraydeumbrales[i];
+                            if (cp != TxtNumeroCapas.Value)
+                                arraydesalidadelacapaactual[pt, i] = new Funciondeactivacion(DtgCapas.Rows[cp].Cells[2].Value.ToString(), arraydesalidadelacapaactual[pt, i]).getfunActivacion();
+                            else
+                            {
+                                arraydesalidadelacapaactual[pt, i] = new Funciondeactivacion(CbxFuncionActivacionCapaSalida.SelectedItem.ToString(), arraydesalidadelacapaactual[pt, i]).getfunActivacion();
+                                listadesalidasdelared.Add(i.ToString() + " " + arraydesalidadelacapaactual[pt, i].ToString());
+                            }
+                        }
+                        diccionariodelassalidasdecapa.Add(cp, arraydesalidadelacapaactual);
+                    }
+                    //Error lineal de las salidas de la red ....
+                    arraydeerroreslineales = new float[salidas];
+                    for (int i = 0; i < salidas; i++)
+                        arraydeerroreslineales[i] = arraydesalidasdeseadas[pt, i] - arraydesalidadelacapaactual[pt, i];
+                    //COMIENZA AQUÍ LA RETROPROPAGACIÓN, DE CADA NEURONA DESDE LA ÚLTIMA CAPA OCULTA HASTA LA PRIMERA...
+                    //Error no lineal por neuronas de las capas ocultas....
+                    for (int capOculta = Convert.ToInt32(TxtNumeroCapas.Value) - 1; capOculta >= 0; capOculta--)
+                    {
+                        //Última capa oculta con salida...
+                        if (capOculta == Convert.ToInt32(TxtNumeroCapas.Value) - 1)
+                        {
+                            arraydeerrornolinealporneuronasdecapasocultas = new float[Convert.ToInt32(DtgCapas.Rows[capOculta].Cells[1].Value.ToString())];
+                            arraydematrizdepesos = diccionariodearraydematrizdepesos[capOculta + 1];
+                            for (int neucapActual = 0; neucapActual < arraydeerrornolinealporneuronasdecapasocultas.Length; neucapActual++)
+                            {
+                                float sumerr = 0;
+                                for (int sal = 0; sal < salidas; sal++)
+                                    sumerr = sumerr + (arraydeerroreslineales[sal] * arraydematrizdepesos[sal, neucapActual]);
+                                arraydeerrornolinealporneuronasdecapasocultas[neucapActual] = sumerr;
+                            }
+                            diccionariodeerrornolinealdeneuronasporcapaoscultas.Add(capOculta, arraydeerrornolinealporneuronasdecapasocultas);
+                        }
+                        else
+                        //Entre capas ocultas....
+                        {
+                            float[] Errorneuronasiguiente = diccionariodeerrornolinealdeneuronasporcapaoscultas[capOculta + 1];
+                            arraydeerrornolinealporneuronasdecapasocultas = new float[Convert.ToInt32(DtgCapas.Rows[capOculta].Cells[1].Value.ToString())];
+                            arraydematrizdepesos = diccionariodearraydematrizdepesos[capOculta + 1];
+                            for (int neucapActual = 0; neucapActual < arraydeerrornolinealporneuronasdecapasocultas.Length; neucapActual++)
+                            {
+                                float sumerr = 0;
+                                for (int neucapaSiguiente = 0; neucapaSiguiente < Errorneuronasiguiente.Length; neucapaSiguiente++)
+                                    sumerr = sumerr + (Errorneuronasiguiente[neucapaSiguiente] * arraydematrizdepesos[neucapaSiguiente, neucapActual]);
+                                arraydeerrornolinealporneuronasdecapasocultas[neucapActual] = sumerr;
+                            }
+                            diccionariodeerrornolinealdeneuronasporcapaoscultas.Add(capOculta, arraydeerrornolinealporneuronasdecapasocultas);
+                        }
+                    }
+                    //TERMINA LA RETROPROPAGACIÓN Y SE MODIFICAR PESOS Y UMBRALES CON LOS ERRORES NO LINEALES POR
+                    //CADA NEURONA DE CADA CAPA OCULTA...
+                    //Modificacion de pesos y umbrales...
+                    for (int capOculta = 0; capOculta <= Convert.ToInt32(TxtNumeroCapas.Value); capOculta++)
+                    {
+                        //Desde la capa entrada hasta la última capa oculta....
+                        arraydematrizdepesos = diccionariodearraydematrizdepesos[capOculta];
+                        arraydeumbrales = diccionariodearraydeumbrales[capOculta];
+                        if (capOculta < Convert.ToInt32(TxtNumeroCapas.Value))
+                            arraydeerroresdeneuronasendiccionario = diccionariodeerrornolinealdeneuronasporcapaoscultas[capOculta];
+                        arraydesalidadelacapaactual = diccionariodelassalidasdecapa[capOculta];
+                        for (int sal = 0; sal < arraydematrizdepesos.GetLength(0); sal++)
+                        {
+                            if (capOculta < Convert.ToInt32(TxtNumeroCapas.Value))
+                                arraydeumbrales[sal] += 2 * ratadeaprendizaje * new Funcionderivada(DtgCapas.Rows[capOculta].Cells[2].Value.ToString(), arraydesalidadelacapaactual[pt, sal]).getfunDerivada() * arraydeerroresdeneuronasendiccionario[sal];
+                            else
+                                arraydeumbrales[sal] += 2 * ratadeaprendizaje * arraydeerroreslineales[sal];
+                            for (int ent = 0; ent < arraydematrizdepesos.GetLength(1); ent++)
+                            {
+                                if (capOculta == 0)
+                                {
+                                    arraydematrizdepesos[sal, ent] += 2 * ratadeaprendizaje * new Funcionderivada(DtgCapas.Rows[capOculta].Cells[2].Value.ToString(), arraydesalidadelacapaactual[pt, sal]).getfunDerivada() * arraydeerroresdeneuronasendiccionario[sal] * arraydeentradasdelared[pt, ent];
+                                }
+                                if (capOculta > 0 && capOculta < Convert.ToInt32(TxtNumeroCapas.Value))
+                                {
+                                    arraydesalidasdecapasocultasanterior = diccionariodelassalidasdecapa[capOculta - 1];
+                                    arraydematrizdepesos[sal, ent] += 2 * ratadeaprendizaje * new Funcionderivada(DtgCapas.Rows[capOculta].Cells[2].Value.ToString(), arraydesalidadelacapaactual[pt, sal]).getfunDerivada() * arraydeerroresdeneuronasendiccionario[sal] * arraydesalidasdecapasocultasanterior[pt, ent];
+                                }
+                                if (capOculta == Convert.ToInt32(TxtNumeroCapas.Value))
+                                {
+                                    arraydesalidasdecapasocultasanterior = diccionariodelassalidasdecapa[capOculta - 1];
+                                    arraydematrizdepesos[sal, ent] += 2 * ratadeaprendizaje * arraydeerroreslineales[sal] * arraydesalidasdecapasocultasanterior[pt, ent];
+                                }
+                            }
+                        }
+                        diccionariodearraydematrizdepesos[capOculta] = arraydematrizdepesos;
+                        diccionariodearraydeumbrales[capOculta] = arraydeumbrales;
+                    }
+                    //Encontrando el error del patron...
+                    float totalerrorlineal = 0;
+                    for (int i = 0; i < salidas; i++)
+                    {
+                        totalerrorlineal = totalerrorlineal + Math.Abs(arraydeerroreslineales[i]);
+                    }
+                    arraydeerrordelospatrones[pt] = totalerrorlineal / salidas;
+                }
+                //Graficar salida de la red...
+                int sa = 0;
+                List<float> salidasdelared = new List<float>();
+                while (sa < salidas)
+                {
+                    foreach (var obj in listadesalidasdelared)
+                    {
+                        string[] reg = obj.Split(' ');
+                        if (reg[0].Equals(sa.ToString()))
+                        {
+                            salidasdelared.Add(float.Parse(reg[1]));
+                        }
+                    }
+                    GraficaComportamientoSalidas2.Series[sa].Points.DataBindXY(numerodepatrones, salidasdelared);
+                    GraficaComportamientoSalidas2.Update();
+                    salidasdelared.Clear();
+                    sa++;
+                }
+                //Calculo del error por iteracion...
+                errordeiteracion = 0;
+                for (int i = 0; i < patrones; i++)
+                {
+                    errordeiteracion += arraydeerrordelospatrones[i];
+                }
+                errordeiteracion = errordeiteracion / patrones;
+                listadeiteraciones.Add(conti);
+                //Graficas generales...
+                lsterrores.Items.Add("[" + listadeiteraciones.Count + "]" + " " + errordeiteracion);
+                lsterrores.SelectedIndex = lsterrores.Items.Count - 1;
+                lsterrores.Update();
+                Graficarerror();
+                conti++;
+                posiciongrafica++;
+            }
+            if (errordeiteracion <= errormaximopermitido)
+            {
+                MessageBox.Show("La red entrenó correctamente y obtuvo su pesos y umbrales optimos en la iteración número " + (listadeiteraciones.Count) + ".");
+                guardarpesosyumbrales(arraydematrizdepesos, arraydeumbrales);
+                BtnSimular.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("La red no termina aún su proceso de aprendizaje. ¡Sigue iterando!");
+                TxtErrorMaximoPermitido.Enabled = false;
+            }
+        }
+
+
         private void Modificaciondepesosyumbrales(int pt, int cp, float[] arraydeerroreslineales, float errordelpatron, int conti)
         {
             arraydematrizdepesos = diccionariodearraydematrizdepesos[cp];

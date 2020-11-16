@@ -1,25 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Acer\\Desktop\\SEGUNDO CORTE INTELIGENCIA\\Prueba\\Entity\\Entity.csproj": {}
+    "C:\\Users\\Ricky\\Documents\\proyectos\\TrabajoIA\\Entity\\Entity.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Acer\\Desktop\\SEGUNDO CORTE INTELIGENCIA\\Prueba\\Entity\\Entity.csproj": {
+    "C:\\Users\\Ricky\\Documents\\proyectos\\TrabajoIA\\Entity\\Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Acer\\Desktop\\SEGUNDO CORTE INTELIGENCIA\\Prueba\\Entity\\Entity.csproj",
+        "projectUniqueName": "C:\\Users\\Ricky\\Documents\\proyectos\\TrabajoIA\\Entity\\Entity.csproj",
         "projectName": "Entity",
-        "projectPath": "C:\\Users\\Acer\\Desktop\\SEGUNDO CORTE INTELIGENCIA\\Prueba\\Entity\\Entity.csproj",
-        "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Acer\\Desktop\\SEGUNDO CORTE INTELIGENCIA\\Prueba\\Entity\\obj\\",
+        "projectPath": "C:\\Users\\Ricky\\Documents\\proyectos\\TrabajoIA\\Entity\\Entity.csproj",
+        "packagesPath": "C:\\Users\\Ricky\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ricky\\Documents\\proyectos\\TrabajoIA\\Entity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Ricky\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
@@ -59,7 +58,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

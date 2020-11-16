@@ -55,6 +55,7 @@
       <DependentUpon>Entrenamiento.cs</DependentUpon>
     </Compile>
     <Compile Include="Funciondeactivacion.cs" />
+    <Compile Include="Funcionderivada.cs" />
     <Compile Include="Simulacion.cs">
       <SubType>Form</SubType>
     </Compile>

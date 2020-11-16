@@ -258,6 +258,7 @@
             this.TxtErrorMaximoPermitido.Name = "TxtErrorMaximoPermitido";
             this.TxtErrorMaximoPermitido.Size = new System.Drawing.Size(98, 22);
             this.TxtErrorMaximoPermitido.TabIndex = 11;
+            this.TxtErrorMaximoPermitido.ValueChanged += new System.EventHandler(this.TxtErrorMaximoPermitido_ValueChanged);
             // 
             // TxtRataAprendizaje
             // 
@@ -373,6 +374,7 @@
             this.CbxFuncionActivacionCapaSalida.Size = new System.Drawing.Size(145, 24);
             this.CbxFuncionActivacionCapaSalida.TabIndex = 20;
             this.CbxFuncionActivacionCapaSalida.Text = "Seleccionar";
+            this.CbxFuncionActivacionCapaSalida.SelectedIndexChanged += new System.EventHandler(this.CbxFuncionActivacionCapaSalida_SelectedIndexChanged);
             // 
             // TxtTipoRed
             // 
@@ -545,8 +547,8 @@
             this.GraficaComportamientoSalida.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea1";
-            this.GraficaComportamientoSalida.ChartAreas.Add(chartArea2);
+            chartArea5.Name = "ChartArea1";
+            this.GraficaComportamientoSalida.ChartAreas.Add(chartArea5);
             this.GraficaComportamientoSalida.Enabled = false;
             this.GraficaComportamientoSalida.Location = new System.Drawing.Point(50, 58);
             this.GraficaComportamientoSalida.Name = "GraficaComportamientoSalida";
@@ -559,8 +561,8 @@
             this.graficaErroriteracion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea3.Name = "ChartArea1";
-            this.graficaErroriteracion.ChartAreas.Add(chartArea3);
+            chartArea6.Name = "ChartArea1";
+            this.graficaErroriteracion.ChartAreas.Add(chartArea6);
             this.graficaErroriteracion.Enabled = false;
             this.graficaErroriteracion.Location = new System.Drawing.Point(986, 111);
             this.graficaErroriteracion.Name = "graficaErroriteracion";
